@@ -1,6 +1,9 @@
 /*
  * Create a list that holds all of your cards
  */
+
+/*jshint esversion: 6 */
+
 let cards = [
   'fa fa-diamond',
   'fa fa-paper-plane-o',
@@ -40,6 +43,16 @@ function shuffle(array) {
   }
 
   return array;
+}
+
+function shuffledDeck() {
+  const cardList = document.querySelectorAll('#play');
+  const lengthList = cardList.length;
+  for (i = lengthList - 1; i >= 0; i--) { // Cycles through node list created from cardList
+    for (let card of cards) {
+      cardList[i].className = cards[i]; // Sets the class name from the cards array (after being shuffled of course!)
+    }
+  }
 }
 
 
