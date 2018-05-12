@@ -164,3 +164,16 @@ h1 {
   vertical-align: middle;
   text-align: center;
 }
+
+@media only screen and (max-width: 600px) {
+  .deck {
+    width: 300px;
+    min-height: 680px;
+    padding: 10px;
+    border-radius: 10px;
+    grid-row-gap: 1em;
+  }
+  .deck .card {
+    height: 60px;
+    width: 60px;
+  }
