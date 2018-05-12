@@ -4,24 +4,18 @@
 
 /*jshint esversion: 6 */
 
-let cards = [
+let deckOfCards = [
   'fa fa-diamond',
   'fa fa-paper-plane-o',
   'fa fa-anchor',
   'fa fa-bolt',
   'fa fa-cube',
-  'fa fa-anchor',
   'fa fa-leaf',
   'fa fa-bicycle',
-  'fa fa-diamond',
-  'fa fa-bomb',
-  'fa fa-leaf',
-  'fa fa-bomb',
-  'fa fa-bolt',
-  'fa fa-bicycle',
-  'fa fa-paper-plane-o',
-  'fa fa-cube'
+  'fa fa-bomb'
 ];
+
+let cards = deckOfCards.concat(deckOfCards);
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -185,7 +179,7 @@ function startTimer() { // Timer functionality
 }
 
 // displays message when all cards are matched!
-// use the following codepen to help me with this function: https://codepen.io/Galiant/pen/bMqRQY?editors=0010 
+// use the following codepen to help me with this function: https://codepen.io/Galiant/pen/bMqRQY?editors=0010
 function displayModal() {
   modal.classList.toggle("closed");
   modalOverlay.classList.toggle("closed");
