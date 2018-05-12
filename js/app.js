@@ -80,6 +80,7 @@ let matchedCards = [];
 function flipCard() {
   if (event.target.classList.contains('card')) {
     showCard();
+    addMoves();
   }
   // if the list already has another card, check to see if the two cards match
   if (flippedCards.length == 2) {
@@ -126,4 +127,13 @@ function hideCards() {
     flippedCard.classList.remove('open', 'show', 'wrong');
     flippedCards = [];
   }
+}
+
+// increment the move counter and display it on the page
+let count = 0;
+
+function addMoves() {
+  const showMoves = document.querySelector('.moves');
+  count++;
+  showMoves.innerHTML = count;
 }
