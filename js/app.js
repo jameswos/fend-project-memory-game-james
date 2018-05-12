@@ -29,6 +29,12 @@ let cards = [
  *   - add each card's HTML to the page
  */
 
+document.addEventListener("DOMContentLoaded", function(event) {
+  event.preventDefault();
+  shuffle(cards);
+  shuffledDeck();
+});
+
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
   var currentIndex = array.length,
@@ -55,6 +61,8 @@ function shuffledDeck() {
   }
 }
 
+document.addEventListener('click', flipCard);
+
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
@@ -67,10 +75,55 @@ function shuffledDeck() {
  */
 
 let flippedCards = [];
+let matchedCards = [];
 
+function flipCard() {
+  if (event.target.classList.contains('card')) {
+    showCard();
+  }
+  // if the list already has another card, check to see if the two cards match
+  if (flippedCards.length == 2) {
+    checkForMatch();
+  }
+}
+
+// display the card's symbol
 function showCard() {
   if (flippedCards.length < 2) {
     event.target.classList.add('open', 'show');
+    // adds the card to a *list* of "open" cards
     flippedCards.push(event.target);
+  }
+}
+
+// checks to see if the two cards match
+function checkForMatch() {
+  // if the cards do match, cards lock in the open position
+  if (flippedCards[0].firstElementChild.className === flippedCards[1].firstElementChild.className) {
+    for (const flippedCard of flippedCards) {
+      flippedCard.classList.replace('show', 'match');
+      matchedCards.push(flippedCard);
+      flippedCards = [];
+    }
+  } else {
+    badGuess();
+    setTimeout(function() {
+      hideCards();
+    }, 1000);
+  }
+}
+
+// shows player that the cards don't match
+function badGuess() {
+  for (let flippedCard of flippedCards) {
+    flippedCard.classList.add('wrong');
+  }
+}
+
+// if the cards do not match, remove the cards from the list and hide the card's symbol
+function hideCards() {
+  for (const flippedCard of flippedCards) {
+    flippedCard.classList.remove('open', 'show', 'wrong');
+    flippedCards = [];
   }
 }
