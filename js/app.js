@@ -184,6 +184,7 @@ function startTimer() { // Timer functionality
   }, 1000);
 }
 
+// displays message when all cards are matched!
 function displayModal() {
   modal.classList.toggle("closed");
   modalOverlay.classList.toggle("closed");
