@@ -81,6 +81,7 @@ function flipCard() {
   if (event.target.classList.contains('card')) {
     showCard();
     addMoves();
+    starRating();
   }
   // if the list already has another card, check to see if the two cards match
   if (flippedCards.length == 2) {
@@ -136,4 +137,18 @@ function addMoves() {
   const showMoves = document.querySelector('.moves');
   count++;
   showMoves.innerHTML = count;
+}
+
+// sets criteria for star rating based on total moves
+function starRating() {
+  const threeStars = document.getElementById('first-star');
+  const twoStars = document.getElementById('second-star');
+  const oneStar = document.getElementById('third-star');
+  if (count >= 16 && count <= 25) {
+    threeStars.firstElementChild.classList.remove('fa-star');
+  } else if (count >= 26 && count <= 35) {
+    twoStars.firstElementChild.classList.remove('fa-star');
+  } else if (count > 35) {
+    oneStar.firstElementChild.classList.remove('fa-star');
+  }
 }
