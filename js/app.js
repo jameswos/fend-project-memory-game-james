@@ -151,12 +151,10 @@ function starRating() {
   const threeStars = document.getElementById('first-star');
   const twoStars = document.getElementById('second-star');
   const oneStar = document.getElementById('third-star');
-  if (count >= 16 && count <= 25) {
+  if (count >= 10 && count <= 20) {
     threeStars.firstElementChild.classList.remove('fa-star');
-  } else if (count >= 26 && count <= 35) {
+  } else if (count > 21) {
     twoStars.firstElementChild.classList.remove('fa-star');
-  } else if (count > 35) {
-    oneStar.firstElementChild.classList.remove('fa-star');
   }
 }
 
@@ -179,13 +177,13 @@ function displayModal() {
   modal.classList.toggle("closed");
   modalOverlay.classList.toggle("closed");
   document.querySelector("#win-message").innerHTML = 'Wow! You took ' + minute + 'm ' + second + 's & ' + count + ' moves to complete the game!';
-  if (count > 0 && count <= 16) {
+  if (count > 0 && count <= 10) {
     document.getElementById('starMessage').innerHTML = "<i class='fa fa-star fa-2x'><i class='fa fa-star fa-2x'><i class='fa fa-star fa-2x'>";
   }
-  if (count > 16 && count < 27) {
+  if (count > 10 && count < 21) {
     document.getElementById('starMessage').innerHTML = "<i class='fa fa-star fa-2x'><i class='fa fa-star fa-2x'>";
   }
-  if (count > 27) {
+  if (count > 21) {
     document.getElementById('starMessage').innerHTML = "<i class='fa fa-star fa-2x'>";
   }
 }
