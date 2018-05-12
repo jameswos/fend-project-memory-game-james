@@ -76,12 +76,22 @@ document.addEventListener('click', flipCard);
 
 let flippedCards = [];
 let matchedCards = [];
+let count = 0;
+let second = 0;
+let minute = 0;
+let interval;
 
 function flipCard() {
   if (event.target.classList.contains('card')) {
     showCard();
     addMoves();
     starRating();
+    if (count == 1) {
+      second = 0;
+      minute = 0;
+      hour = 0;
+      startTimer();
+    }
   }
   // if the list already has another card, check to see if the two cards match
   if (flippedCards.length == 2) {
@@ -131,8 +141,6 @@ function hideCards() {
 }
 
 // increment the move counter and display it on the page
-let count = 0;
-
 function addMoves() {
   const showMoves = document.querySelector('.moves');
   count++;
@@ -151,4 +159,21 @@ function starRating() {
   } else if (count > 35) {
     oneStar.firstElementChild.classList.remove('fa-star');
   }
+}
+
+// starts a timer after the first card is flipped
+function startTimer() { // Timer functionality
+  const timer = document.querySelector('.timer');
+  interval = setInterval(function() {
+    timer.innerHTML = minute + 'm ' + second + 's';
+    second++;
+    if (second == 60) {
+      minute++;
+      second = 0;
+    }
+    if (minute == 60) {
+      hour++;
+      minute = 0;
+    }
+  }, 1000);
 }
