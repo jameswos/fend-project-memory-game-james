@@ -26,9 +26,9 @@
       <span class="moves">0</span> Moves
       <span class="timer">0m 0s</span>
 
-      <div class="restart">
+      <a onClick="window.location.reload()" class="restart">
         <i class="fa fa-repeat"></i>
-      </div>
+      </a>
     </section>
 
     <ul class="deck">
@@ -81,9 +81,8 @@
         <i class="fa fa-cube" id="play"></i>
       </li>
     </ul>
-    <div id="openModal" class="win-modal">
-      <div class="modal" id="modal">
-        <button class="close-button" id="close-button">X</button>
+    <div id="win-modal" class="win-modal closed">
+      <div id="modal" class="modal closed">
         <div class="modal-guts">
           <h2>Winner winner chicken dinner!</h2>
           <p id="win-message"></p>

@@ -80,6 +80,8 @@ let count = 0;
 let second = 0;
 let minute = 0;
 let interval;
+let modal = document.querySelector("#modal");
+let modalOverlay = document.querySelector("#win-modal");
 
 function flipCard() {
   if (event.target.classList.contains('card')) {
@@ -96,6 +98,10 @@ function flipCard() {
   // if the list already has another card, check to see if the two cards match
   if (flippedCards.length == 2) {
     checkForMatch();
+  }
+  if (matchedCards.length == 16) {
+    clearInterval(interval);
+    displayModal();
   }
 }
 
@@ -176,4 +182,19 @@ function startTimer() { // Timer functionality
       minute = 0;
     }
   }, 1000);
+}
+
+function displayModal() {
+  modal.classList.toggle("closed");
+  modalOverlay.classList.toggle("closed");
+  document.querySelector("#win-message").innerHTML = 'Wow! You took ' + minute + 'm ' + second + 's & ' + count + ' moves to complete the game!';
+  if (count > 0 && count <= 16) {
+    document.getElementById('starMessage').innerHTML = "<i class='fa fa-star fa-2x'><i class='fa fa-star fa-2x'><i class='fa fa-star fa-2x'>";
+  }
+  if (count > 16 && count < 27) {
+    document.getElementById('starMessage').innerHTML = "<i class='fa fa-star fa-2x'><i class='fa fa-star fa-2x'>";
+  }
+  if (count > 27) {
+    document.getElementById('starMessage').innerHTML = "<i class='fa fa-star fa-2x'>";
+  }
 }
