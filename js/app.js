@@ -109,7 +109,7 @@ function checkForMatch() {
     badGuess();
     setTimeout(function() {
       hideCards();
-    }, 1000);
+    }, 750);
   }
 }
 
