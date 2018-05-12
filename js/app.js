@@ -185,6 +185,7 @@ function startTimer() { // Timer functionality
 }
 
 // displays message when all cards are matched!
+// use the following codepen to help me with this function: https://codepen.io/Galiant/pen/bMqRQY?editors=0010 
 function displayModal() {
   modal.classList.toggle("closed");
   modalOverlay.classList.toggle("closed");

@@ -119,6 +119,10 @@ h1 {
   margin: 0 1rem;
 }
 
+/*
+ * styling mostly taken from: https://css-tricks.com/considerations-styling-modal/
+*/
+
 .modal {
   display: block;
   width: 600px;
