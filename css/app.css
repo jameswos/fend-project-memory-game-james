@@ -149,6 +149,7 @@ h1 {
 }
 
 .modal-guts {
+  font-family: 'Coda', cursive;
   position: absolute;
   top: 0;
   left: 0;
