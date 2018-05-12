@@ -80,18 +80,12 @@ let modalOverlay = document.querySelector("#win-modal");
 function flipCard() {
   if (event.target.classList.contains('card')) {
     showCard();
-    addMoves();
     starRating();
-    if (count == 1) {
-      second = 0;
-      minute = 0;
-      hour = 0;
-      startTimer();
-    }
   }
   // if the list already has another card, check to see if the two cards match
   if (flippedCards.length == 2) {
     checkForMatch();
+    addMoves();
   }
   if (matchedCards.length == 16) {
     clearInterval(interval);
@@ -145,6 +139,11 @@ function addMoves() {
   const showMoves = document.querySelector('.moves');
   count++;
   showMoves.innerHTML = count;
+  if (count == 1) {
+    second = 0;
+    minute = 0;
+    startTimer();
+  }
 }
 
 // sets criteria for star rating based on total moves
@@ -161,19 +160,15 @@ function starRating() {
   }
 }
 
-// starts a timer after the first card is flipped
-function startTimer() { // Timer functionality
+// starts a timer after the first move
+function startTimer() {
   const timer = document.querySelector('.timer');
   interval = setInterval(function() {
-    timer.innerHTML = minute + 'm ' + second + 's';
+    timer.textContent = minute + 'm ' + second + 's';
     second++;
     if (second == 60) {
       minute++;
       second = 0;
-    }
-    if (minute == 60) {
-      hour++;
-      minute = 0;
     }
   }, 1000);
 }

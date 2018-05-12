@@ -79,12 +79,30 @@ h1 {
   background: #02ccba;
   font-size: 33px;
   pointer-events: none;
+  animation-name: bounceIn;
+  animation-duration: 0.5s;
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .deck .card.wrong {
   cursor: default;
   background: #FF0000;
   pointer-events: none;
+  animation-name: bounceIn;
+  animation-duration: 0.5s;
 }
 
 /*
